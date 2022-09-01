@@ -18,7 +18,7 @@ namespace UserAPP.APi.controllers
         [HttpGet("{groupId}")]
         public ActionResult<GroupModel> group([FromRoute] int groupId)
         {
-            return new GroupModel() {groupId = 3, groupName = "streamers"}
+            return new GroupModel() {groupId = 3, groupName = "streamers"};
         }
 
          // POST USER
@@ -45,7 +45,7 @@ namespace UserAPP.APi.controllers
             return Ok();
         }
 
-        [HttpPatch("{id}/[Action]", Name = "Activate")]
+      /*  [HttpPatch("{id}/[Action]", Name = "Activate")]
         public ActionResult Activate([FromRoute] int id)
         {
             return Ok();
@@ -56,6 +56,6 @@ namespace UserAPP.APi.controllers
         public ActionResult Inactivate([FromRoute] int id)
         {
             return Ok();
-        }
+        }*/
     }
 }

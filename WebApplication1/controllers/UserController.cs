@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using userApp.models;
+using userApp.services;
 
 namespace UserAPP.APi.controllers
 {
@@ -8,6 +9,9 @@ namespace UserAPP.APi.controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+
+        private readonly UserServiceImp userService;
+
         // GET USER
         [HttpGet("{userId}")]
         public ActionResult<UserModel> GetUser([FromRoute] int userId)
@@ -33,6 +37,10 @@ namespace UserAPP.APi.controllers
         [HttpPost]
         public ActionResult CreateUser([FromBody] UserModel user)
         {
+            //llamar a servicios
+            var su = new UserServiceImp();
+
+            su.CreateUser(user);
             return Ok();
         }
 
