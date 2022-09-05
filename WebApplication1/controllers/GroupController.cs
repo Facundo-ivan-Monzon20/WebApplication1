@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using userApp.models;
+using userApp.services;
+
 
 namespace UserAPP.APi.controllers
 {
@@ -8,6 +10,13 @@ namespace UserAPP.APi.controllers
     [ApiController]
     public class GroupController : ControllerBase
     {
+
+        private readonly GroupServiceImp? groupService;
+
+        public GroupController(GroupServiceImp? groupService)
+        {
+            this.groupService = groupService;
+        }
 
         [HttpGet]
         public ActionResult<GroupModel> Groups()
@@ -18,7 +27,9 @@ namespace UserAPP.APi.controllers
         [HttpGet("{groupId}")]
         public ActionResult<GroupModel> group([FromRoute] int groupId)
         {
-            return new GroupModel() {groupId = 3, groupName = "streamers"};
+
+            var service = new GroupServiceImp();
+            return groupService.GetGroup(groupId);
         }
 
          // POST USER

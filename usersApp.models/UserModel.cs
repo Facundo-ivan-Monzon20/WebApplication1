@@ -17,9 +17,9 @@ namespace userApp.models
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string DNI { get; set; }
-        public DateTime BirthDay { get; set; }
+        public DateTime? BirthDay { get; set; }
         public bool Disabled { get; set; }
-        public DateTime LastUpdateDate { get; set; }
+        public DateTime? LastUpdateDate { get; set; }
         public string LastUpdateBy { get; set; }
 
     }

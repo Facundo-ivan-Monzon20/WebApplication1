@@ -12,6 +12,11 @@ namespace UserAPP.APi.controllers
 
         private readonly UserServiceImp userService;
 
+        public UserController(UserServiceImp userService)
+        {
+            this.userService = userService;
+        }
+
         // GET USER
         [HttpGet("{userId}")]
         public ActionResult<UserModel> GetUser([FromRoute] int userId)

@@ -14,7 +14,8 @@ namespace userApp.DAL
         {
             optionsBuilder.UseMySQL("server:localhost:3000;database:userapp;user=root;password=");
         }
+        public DbSet<Entities.UserContext> users { get; set; }
 
-        public DbSet<Entities.userContext> users { get; set; };
+        public DbSet<Entities.GroupContext> groups { get; set; }
     }
 }

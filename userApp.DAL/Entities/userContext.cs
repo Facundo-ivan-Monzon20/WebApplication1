@@ -10,7 +10,7 @@ namespace userApp.DAL.Entities
 {
 
     [Table("user")]
-    public class userContext
+    public class UserContext
     {
         [Key]
         public int userId { get; set; }

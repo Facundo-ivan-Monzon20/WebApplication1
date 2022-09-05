@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace userApp.models
+namespace userApp.DAL.Entities
 {
-    public class GroupModel
+
+    [Table("group")]
+    public class GroupContext
     {
+        [Key]
         public int groupId { get; set; }
         public string groupName { get; set; }
         public bool Disabled { get; set; }
-        public DateTime? LastUpdateDate { get; set; }
+        public DateTime LastUpdateDate { get; set; }
         public string LastUpdateBy { get; set; }
     }
 }
