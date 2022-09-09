@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using userApp.DAL.Entities;
 
 namespace userApp.DAL
 {
@@ -12,10 +12,10 @@ namespace userApp.DAL
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server:localhost:3000;database:userapp;user=root;password=");
+            optionsBuilder.UseMySQL("server:localhost:3306;database:userapp;user=root;password=");
         }
-        public DbSet<Entities.UserContext> users { get; set; }
+        public DbSet<UserContext> users { get; set; }
 
-        public DbSet<Entities.GroupContext> groups { get; set; }
+        public DbSet<GroupContext> groups { get; set; }
     }
 }

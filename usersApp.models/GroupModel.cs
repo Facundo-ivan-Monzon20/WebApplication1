@@ -10,7 +10,7 @@ namespace userApp.models
     {
         public int groupId { get; set; }
         public string groupName { get; set; }
-        public bool Disabled { get; set; }
+        public string Inactive { get; set; }
         public DateTime? LastUpdateDate { get; set; }
         public string LastUpdateBy { get; set; }
     }

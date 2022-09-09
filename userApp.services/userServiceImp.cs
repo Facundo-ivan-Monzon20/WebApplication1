@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using userApp.models;
+using userApp.DAL;
+
 
 namespace userApp.services
 {

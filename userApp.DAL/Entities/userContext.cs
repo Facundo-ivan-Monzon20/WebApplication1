@@ -22,7 +22,7 @@ namespace userApp.DAL.Entities
         public string PhoneNumber { get; set; }
         public string DNI { get; set; }
         public DateTime BirthDay { get; set; }
-        public bool Disabled { get; set; }
+        public bool Inactive { get; set; }
         public DateTime LastUpdateDate { get; set; }
         public string LastUpdateBy { get; set; }
     }

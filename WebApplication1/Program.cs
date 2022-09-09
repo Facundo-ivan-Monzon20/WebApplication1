@@ -1,3 +1,5 @@
+using userApp.DAL;
+using userApp.services;
 namespace WebApplication1
 {
     public class Program
@@ -8,6 +10,11 @@ namespace WebApplication1
             
 
             builder.Services.AddControllers();
+
+            builder.Services.AddDbContext<UserAppContex>();
+
+            builder.Services.AddScoped<GroupServices, GroupServiceImp>();
+            builder.Services.AddScoped<UserServices, UserServiceImp>();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

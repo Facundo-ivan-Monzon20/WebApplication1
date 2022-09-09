@@ -10,12 +10,11 @@ namespace UserAPP.APi.controllers
     [ApiController]
     public class GroupController : ControllerBase
     {
+        private readonly GroupServiceImp _groupServiceImp;
 
-        private readonly GroupServiceImp? groupService;
-
-        public GroupController(GroupServiceImp? groupService)
+        public GroupController(GroupServiceImp groupServiceImp)
         {
-            this.groupService = groupService;
+            _groupServiceImp = groupServiceImp;
         }
 
         [HttpGet]
@@ -25,17 +24,15 @@ namespace UserAPP.APi.controllers
         }
 
         [HttpGet("{groupId}")]
-        public ActionResult<GroupModel> group([FromRoute] int groupId)
+        public ActionResult<GroupModel> Group([FromRoute] int groupId)
         {
-
-            var service = new GroupServiceImp();
-            return groupService.GetGroup(groupId);
+            return _groupServiceImp.GetGroup(groupId);
         }
 
          // POST USER
 
         [HttpPost]
-        public ActionResult CreateUser([FromBody] GroupModel group)
+        public ActionResult CreateGroup([FromBody] GroupModel groupModel)
         {
             return Ok();
         }
@@ -43,30 +40,30 @@ namespace UserAPP.APi.controllers
         // PUT USER
 
         [HttpPut("id")]
-        public ActionResult UpdateUser([FromRoute]int id,[FromBody] GroupModel group)
+        public ActionResult UpdateGroup([FromRoute]int id,[FromBody] GroupModel groupModel)
         {
             if (id == -1)
                 return NoContent();
             return Ok();
         }
-        // DELETE USER
+ 
         [HttpDelete("id")]
-        public ActionResult deleteUser([FromRoute] int id)
+        public ActionResult deleteGroup([FromRoute] int id)
         {
             return Ok();
         }
 
-      /*  [HttpPatch("{id}/[Action]", Name = "Activate")]
-        public ActionResult Activate([FromRoute] int id)
+        [HttpPatch("{idGroup}/[Action]")]
+        public ActionResult groupActivate([FromRoute] int idGroup)
         {
             return Ok();
         }
 
 
-        [HttpPatch("{id}/[Action]", Name = "Inactivate")]
-        public ActionResult Inactivate([FromRoute] int id)
+        [HttpPatch("{idGroup}/[Action]")]
+        public ActionResult groupInactive([FromRoute] int idGroup)
         {
             return Ok();
-        }*/
+        }
     }
 }

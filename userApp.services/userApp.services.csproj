@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\userApp.DAL\userApp.DAL.csproj" />
     <ProjectReference Include="..\usersApp.models\userApp.models.csproj" />
   </ItemGroup>
 

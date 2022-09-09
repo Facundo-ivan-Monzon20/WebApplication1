@@ -10,13 +10,6 @@ namespace UserAPP.APi.controllers
     public class UserController : ControllerBase
     {
 
-        private readonly UserServiceImp userService;
-
-        public UserController(UserServiceImp userService)
-        {
-            this.userService = userService;
-        }
-
         // GET USER
         [HttpGet("{userId}")]
         public ActionResult<UserModel> GetUser([FromRoute] int userId)
@@ -51,7 +44,7 @@ namespace UserAPP.APi.controllers
 
         // PUT USER
 
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public ActionResult UpdateUser([FromRoute]int id,[FromBody] UserModel user)
         {
             if (id == -1)
@@ -59,21 +52,21 @@ namespace UserAPP.APi.controllers
             return Ok();
         }
         // DELETE USER
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public ActionResult deleteUser([FromRoute] int id)
         {
             return Ok();
         }
 
-        [HttpPatch("{id}/[Action]", Name = "Activate")]
+        [HttpPatch("{id}/[Action]")]
         public ActionResult Activate([FromRoute] int id)
         {
             return Ok();
         }
 
 
-        [HttpPatch("{id}/[Action]", Name = "Inactivate")]
-        public ActionResult Inactivate([FromRoute] int id)
+        [HttpPatch("{id}/[Action]")]
+        public ActionResult Inactive([FromRoute] int id)
         {
             return Ok();
         }
