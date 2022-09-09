@@ -24,7 +24,7 @@ namespace userApp.services
             var newGroups = new DAL.Entities.GroupContext
             {
                 groupName = groupModel.groupName,
-                Inactive = groupModel.Inactive == "Activate" ? true : false,
+                Inactive = groupModel.Inactive == "Activate",
                 LastUpdateBy = "",
                 LastUpdateDate = DateTime.Now
             };

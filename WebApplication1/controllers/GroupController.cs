@@ -10,11 +10,11 @@ namespace UserAPP.APi.controllers
     [ApiController]
     public class GroupController : ControllerBase
     {
-        private readonly GroupServiceImp _groupServiceImp;
+        private readonly GroupServices _groupServices;
 
-        public GroupController(GroupServiceImp groupServiceImp)
+        public GroupController(GroupServices groupServices)
         {
-            _groupServiceImp = groupServiceImp;
+            _groupServices = groupServices;
         }
 
         [HttpGet]
@@ -26,7 +26,7 @@ namespace UserAPP.APi.controllers
         [HttpGet("{groupId}")]
         public ActionResult<GroupModel> Group([FromRoute] int groupId)
         {
-            return _groupServiceImp.GetGroup(groupId);
+            return _groupServices.GetGroup(groupId);
         }
 
          // POST USER
@@ -34,6 +34,8 @@ namespace UserAPP.APi.controllers
         [HttpPost]
         public ActionResult CreateGroup([FromBody] GroupModel groupModel)
         {
+            
+            _groupServices.CreateGroup(groupModel);
             return Ok();
         }
 

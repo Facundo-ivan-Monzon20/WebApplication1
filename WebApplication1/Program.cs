@@ -1,5 +1,6 @@
 using userApp.DAL;
 using userApp.services;
+
 namespace WebApplication1
 {
     public class Program
@@ -8,11 +9,10 @@ namespace WebApplication1
         {
             var builder = WebApplication.CreateBuilder(args);
             
-
             builder.Services.AddControllers();
 
             builder.Services.AddDbContext<UserAppContex>();
-
+            
             builder.Services.AddScoped<GroupServices, GroupServiceImp>();
             builder.Services.AddScoped<UserServices, UserServiceImp>();
 
