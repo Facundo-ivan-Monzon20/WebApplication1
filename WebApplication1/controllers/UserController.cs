@@ -10,7 +10,14 @@ namespace UserAPP.APi.controllers
     public class UserController : ControllerBase
     {
 
+        private readonly UserServices _userServices;
+
         // GET USER
+        public UserController(UserServices userServices)
+        {
+            _userServices = userServices;
+        }
+
         [HttpGet("{userId}")]
         public ActionResult<UserModel> GetUser([FromRoute] int userId)
         {
@@ -26,7 +33,7 @@ namespace UserAPP.APi.controllers
             result.Add(new UserModel { userId = 1, UserName = "Facundo Monzon", DNI = "43126971", Email = "fmivan02@gmail.com" });
             result.Add(new UserModel { userId = 2, UserName = "ivan Monzon", DNI = "43126971", Email = "fmivan02@gmail.com" });
 
-            return result;
+            return _userServices.GetUsers();
 
         }
 
@@ -36,9 +43,7 @@ namespace UserAPP.APi.controllers
         public ActionResult CreateUser([FromBody] UserModel user)
         {
             //llamar a servicios
-            var su = new UserServiceImp();
-
-            su.CreateUser(user);
+            _userServices.CreateUser(user);
             return Ok();
         }
 
@@ -59,7 +64,7 @@ namespace UserAPP.APi.controllers
         }
 
         [HttpPatch("{id}/[Action]")]
-        public ActionResult Activate([FromRoute] int id)
+        public ActionResult Active([FromRoute] int id)
         {
             return Ok();
         }

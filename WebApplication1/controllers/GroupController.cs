@@ -56,14 +56,14 @@ namespace UserAPP.APi.controllers
         }
 
         [HttpPatch("{idGroup}/[Action]")]
-        public ActionResult groupActivate([FromRoute] int idGroup)
+        public ActionResult Active([FromRoute] int idGroup)
         {
             return Ok();
         }
 
 
         [HttpPatch("{idGroup}/[Action]")]
-        public ActionResult groupInactive([FromRoute] int idGroup)
+        public ActionResult Inactive([FromRoute] int idGroup)
         {
             return Ok();
         }

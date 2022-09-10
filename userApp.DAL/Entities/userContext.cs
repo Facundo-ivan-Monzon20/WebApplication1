@@ -19,11 +19,11 @@ namespace userApp.DAL.Entities
         public string FirstName { get; set; }
         public string lastName { get; set; }
         public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public string Phone { get; set; }
         public string DNI { get; set; }
-        public DateTime BirthDay { get; set; }
+        public DateTime? BirthDay { get; set; }
         public bool Inactive { get; set; }
-        public DateTime LastUpdateDate { get; set; }
+        public DateTime? LastUpdateDate { get; set; }
         public string LastUpdateBy { get; set; }
     }
 }
