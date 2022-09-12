@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using userApp.models;
 using userApp.DAL;
+using userApp.DAL.Entities;
 
 namespace userApp.services
 {
@@ -44,9 +46,25 @@ namespace userApp.services
             return new GroupModel() { groupId = 2, groupName = "Cantantes" };
         }
 
-        public List<GroupModel> GetGroups()
+        public async Task<List<GroupModel>> GetGroups()
         {
-            throw new NotImplementedException();
+          var groupContexts = await _db.groups.ToArrayAsync();
+          List<GroupModel> groupModels = new List<GroupModel>();
+
+          foreach (GroupContext groupContext in groupContexts)
+          {
+              var group = new GroupModel()
+              {
+                  groupId = groupContext.groupId,
+                  groupName = groupContext.groupName,
+                  Inactive = groupContext.Inactive ? "Active" : "Inactive",
+                  LastUpdateBy = groupContext.LastUpdateBy,
+                  LastUpdateDate = groupContext.LastUpdateDate
+              };
+              groupModels.Add(group);
+          }
+
+          return groupModels;
         }
 
         public void UpdateGroup(GroupModel groupModel)

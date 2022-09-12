@@ -16,7 +16,7 @@ namespace userApp.services
 
         public GroupModel GetGroup(int id);
 
-        public List<GroupModel> GetGroups();
+        public Task<List<GroupModel>> GetGroups();
 
         public void DeleteGroup(int id);
 

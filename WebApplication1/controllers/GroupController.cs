@@ -18,9 +18,9 @@ namespace UserAPP.APi.controllers
         }
 
         [HttpGet]
-        public ActionResult<GroupModel> Groups()
+        public Task<List<GroupModel>> Groups()
         {
-            return new GroupModel() { groupId = 1, groupName = "Cantantes"};
+            return _groupServices.GetGroups();
         }
 
         [HttpGet("{groupId}")]
