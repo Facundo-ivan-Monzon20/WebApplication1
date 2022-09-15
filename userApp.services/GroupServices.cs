@@ -10,13 +10,13 @@ namespace userApp.services
 {
     public interface GroupServices
     {
-        public void CreateGroup(GroupModel groupModel);
+        public ResponseModel CreateGroup(GroupModel groupModel);
 
         public void UpdateGroup(GroupModel groupModel);
 
         public GroupModel GetGroup(int id);
 
-        public Task<List<GroupModel>> GetGroups();
+        public List<GroupModel> GetGroups();
 
         public void DeleteGroup(int id);
 

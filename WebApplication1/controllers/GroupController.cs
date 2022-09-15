@@ -18,7 +18,7 @@ namespace UserAPP.APi.controllers
         }
 
         [HttpGet]
-        public Task<List<GroupModel>> Groups()
+        public ActionResult<List<GroupModel>> Groups()
         {
             return _groupServices.GetGroups();
         }
@@ -34,9 +34,12 @@ namespace UserAPP.APi.controllers
         [HttpPost]
         public ActionResult CreateGroup([FromBody] GroupModel groupModel)
         {
-            
-            _groupServices.CreateGroup(groupModel);
-            return Ok();
+            var _response = _groupServices.CreateGroup(groupModel);
+
+            if (_response.Succes) return Ok();
+
+
+            return BadRequest(_response.Errors);
         }
 
         // PUT USER

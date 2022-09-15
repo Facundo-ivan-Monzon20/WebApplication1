@@ -10,7 +10,7 @@ namespace userApp.services
 {
     public interface UserServices
     {
-        public void CreateUser(UserModel userModel);
+        public ResponseModel CreateUser(UserModel userModel);
 
         public void UpdateUser(UserModel userModel);
 

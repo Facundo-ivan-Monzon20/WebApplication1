@@ -20,8 +20,19 @@ namespace userApp.services
             _db = db;
         }
 
-        public void CreateGroup(GroupModel groupModel)
+        public ResponseModel CreateGroup(GroupModel groupModel)
         {
+            ResponseModel response = new();
+
+            //validar
+
+            if(string.IsNullOrEmpty(groupModel.groupName))
+            {
+                response.Succes = false;
+                response.Errors.Add("El campo nombre de grupo es requerido");
+            }
+
+            if (!response.Succes) return response;
 
             var newGroups = new DAL.Entities.GroupContext
             {
@@ -33,7 +44,8 @@ namespace userApp.services
 
             _db.groups.Add(newGroups);
             _db.SaveChanges();
-
+            
+            return response;
         }
 
         public void DeleteGroup(int id)
@@ -46,25 +58,29 @@ namespace userApp.services
             return new GroupModel() { groupId = 2, groupName = "Cantantes" };
         }
 
-        public async Task<List<GroupModel>> GetGroups()
+        public List<GroupModel> GetGroups()
         {
-          var groupContexts = await _db.groups.ToArrayAsync();
-          List<GroupModel> groupModels = new List<GroupModel>();
 
-          foreach (GroupContext groupContext in groupContexts)
-          {
-              var group = new GroupModel()
-              {
-                  groupId = groupContext.groupId,
-                  groupName = groupContext.groupName,
-                  Inactive = groupContext.Inactive ? "Active" : "Inactive",
-                  LastUpdateBy = groupContext.LastUpdateBy,
-                  LastUpdateDate = groupContext.LastUpdateDate
-              };
-              groupModels.Add(group);
-          }
+          var groups = _db.groups.ToList();
 
-          return groupModels;
+          var response = new List<GroupModel>();
+
+            groups.ForEach(group => {
+
+                if (group.Inactive)
+                {
+                    response.Add((new GroupModel()
+                    {
+                        groupId = group.groupId,
+                        groupName = group.groupName,
+                        Inactive = group.Inactive ? "Active" : "Inactive",
+                        LastUpdateBy = group.LastUpdateBy,
+                        LastUpdateDate = group.LastUpdateDate
+                    }));
+                }
+            });
+
+            return response;
         }
 
         public void UpdateGroup(GroupModel groupModel)

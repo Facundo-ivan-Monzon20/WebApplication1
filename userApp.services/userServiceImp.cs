@@ -20,8 +20,14 @@ namespace userApp.services
             _db = db;
         }
 
-        public void CreateUser(UserModel userModel)
+        public ResponseModel CreateUser(UserModel userModel)
         {
+
+            ResponseModel response = new();
+
+           
+
+
             var newUser = new DAL.Entities.UserContext
             {
                 UserName = userModel.UserName,
@@ -38,6 +44,9 @@ namespace userApp.services
             };
             _db.users.Add(newUser);
             _db.SaveChanges();
+
+
+            return response;
         }
 
         public void DeleteUser(int id)
