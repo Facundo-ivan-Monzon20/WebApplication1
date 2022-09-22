@@ -28,12 +28,9 @@ namespace UserAPP.APi.controllers
         [HttpGet]
         public ActionResult<List<UserModel>> GetUsers()
         {
-            var result = new List<UserModel>();
-
-            result.Add(new UserModel { userId = 1, UserName = "Facundo Monzon", DNI = "43126971", Email = "fmivan02@gmail.com" });
-            result.Add(new UserModel { userId = 2, UserName = "ivan Monzon", DNI = "43126971", Email = "fmivan02@gmail.com" });
-
-            return _userServices.GetUsers();
+            var _response = _userServices.GetUsers(); 
+            
+            return _response;
 
         }
 
@@ -43,8 +40,11 @@ namespace UserAPP.APi.controllers
         public ActionResult CreateUser([FromBody] UserModel user)
         {
             //llamar a servicios
-            _userServices.CreateUser(user);
-            return Ok();
+            var _response = _userServices.CreateUser(user);
+
+            if (_response.Succes) return Ok();
+            
+            return BadRequest(_response.Errors);
         }
 
         // PUT USER

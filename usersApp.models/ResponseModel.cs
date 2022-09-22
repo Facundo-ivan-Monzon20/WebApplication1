@@ -10,6 +10,7 @@ namespace userApp.models
     {
         public bool Succes { get; set; } = true;
         public List<string> Errors { get; set; } = new List<string>();
-
+        
+        
     }
 }

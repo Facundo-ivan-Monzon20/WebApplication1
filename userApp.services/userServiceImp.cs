@@ -24,8 +24,42 @@ namespace userApp.services
         {
 
             ResponseModel response = new();
+            
+            //validar
 
-           
+            if (string.IsNullOrEmpty(userModel.UserName))
+            {
+                response.Succes = false;
+                response.Errors.Add("El campo nombre de usuario es requerido");
+            } 
+            
+            if (string.IsNullOrEmpty(userModel.FirstName))
+            {
+                response.Succes = false;
+                response.Errors.Add("El campo primer nombre de usuario es requerido");
+            }
+            if (string.IsNullOrEmpty(userModel.lastName))
+            {
+                response.Succes = false;
+                response.Errors.Add("El campo apellido de usuario es requerido");
+            }
+            if (string.IsNullOrEmpty(userModel.Password))
+            {
+                response.Succes = false;
+                response.Errors.Add("El campo contraseña de usuario es requerido");
+            }
+            if (string.IsNullOrEmpty(userModel.Email))
+            {
+                response.Succes = false;
+                response.Errors.Add("El campo Email de usuario es requerido");
+            }
+            if (string.IsNullOrEmpty(userModel.DNI))
+            {
+                response.Succes = false;
+                response.Errors.Add("El campo DNI de usuario es requerido");
+            }
+
+            if (!response.Succes) return response;
 
 
             var newUser = new DAL.Entities.UserContext
@@ -61,31 +95,24 @@ namespace userApp.services
 
         public List<UserModel> GetUsers()
         {
-
-            List<DAL.Entities.UserContext> users = _db.users.ToList();
+            List<UserContext> users = _db.users.ToList();
             List<UserModel> usersModels = new List<UserModel>();
-
-            foreach (var userContext in users)
-            {
-
-                var user = new UserModel
+            users.ForEach(user =>
+                usersModels.Add(new UserModel
                 {
-                    userId = userContext.userId,
-                    UserName = userContext.UserName,
-                    Password = userContext.Password,
-                    FirstName = userContext.FirstName,
-                    lastName = userContext.lastName,
-                    Email = userContext.Email,
-                    PhoneNumber = userContext.Phone,
-                    DNI = userContext.DNI,
-                    BirthDay = userContext.BirthDay,
-                    Inactive = userContext.Inactive ? "Active" : "Inactive",
-                    LastUpdateDate = userContext.LastUpdateDate,
-                    LastUpdateBy = userContext.LastUpdateBy
-                };
-                usersModels.Add(user); 
-            }
-
+                    userId = user.userId,
+                    UserName = user.UserName,
+                    Password = user.Password,
+                    FirstName = user.FirstName,
+                    lastName = user.lastName,
+                    Email = user.Email,
+                    PhoneNumber = user.Phone,
+                    DNI = user.DNI,
+                    BirthDay = user.BirthDay,
+                    Inactive = user.Inactive ? "Active" : "Inactive",
+                    LastUpdateDate = user.LastUpdateDate,
+                    LastUpdateBy = user.LastUpdateBy
+                }));
             return usersModels;
         }
 
