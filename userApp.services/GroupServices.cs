@@ -14,7 +14,7 @@ namespace userApp.services
 
         public void UpdateGroup(GroupModel groupModel);
 
-        public GroupModel GetGroup(int id);
+        public ResponseModel<GroupModel> GetGroup(int id);
 
         public List<GroupModel> GetGroups();
 

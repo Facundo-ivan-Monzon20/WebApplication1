@@ -26,7 +26,14 @@ namespace UserAPP.APi.controllers
         [HttpGet("{groupId}")]
         public ActionResult<GroupModel> Group([FromRoute] int groupId)
         {
-            return _groupServices.GetGroup(groupId);
+            var _response = _groupServices.GetGroup(groupId);
+
+            if (_response.Succes)
+            {
+                return Ok(_response.result);
+            }
+
+            return BadRequest(_response.Errors);
         }
 
          // POST USER

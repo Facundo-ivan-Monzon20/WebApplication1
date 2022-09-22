@@ -53,9 +53,35 @@ namespace userApp.services
             throw new NotImplementedException();
         }
 
-        public GroupModel GetGroup(int id)
+        public ResponseModel<GroupModel> GetGroup(int id)
         {
-            return new GroupModel() { groupId = 2, groupName = "Cantantes" };
+
+            var response = new ResponseModel<GroupModel>();
+            
+
+            var group = _db.groups.Where(g => g.groupId == id).FirstOrDefault();
+
+            if(group == null)
+            {
+                response.Succes = false;
+                response.Errors.Add("El grupo no existe");
+
+            }
+
+            if (!response.Succes)
+            {
+                return response;
+            }
+
+
+            response.result = new GroupModel
+            {
+                groupId = group.groupId,
+                groupName = group.groupName,
+
+            };
+
+            return response;
         }
 
         public List<GroupModel> GetGroups()
