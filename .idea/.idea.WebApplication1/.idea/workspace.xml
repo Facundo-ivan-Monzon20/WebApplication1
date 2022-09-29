@@ -9,10 +9,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dffe96f7-62e0-40fd-a4a6-facb31625d64" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/WebApplication1/controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/dataSources/561445de-33b9-4a9b-bd6f-4d0c2b1f3304.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/dataSources/561445de-33b9-4a9b-bd6f-4d0c2b1f3304.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication1/controllers/GroupController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication1/controllers/GroupController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/userApp.DAL/UserAppContex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/userApp.DAL/UserAppContex.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userApp.services/userServiceImp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/userApp.services/userServiceImp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usersApp.models/ResponseModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/usersApp.models/ResponseModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userApp.services/GroupServiceImp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/userApp.services/GroupServiceImp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userApp.services/GroupServices.cs" beforeDir="false" afterPath="$PROJECT_DIR$/userApp.services/GroupServices.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +101,9 @@
       <workItem from="1662910021739" duration="281000" />
       <workItem from="1662942474210" duration="1775000" />
       <workItem from="1663123169452" duration="319000" />
-      <workItem from="1663859048845" duration="3815000" />
+      <workItem from="1663859048845" duration="4552000" />
+      <workItem from="1664220530864" duration="278000" />
+      <workItem from="1664473862123" duration="4358000" />
     </task>
     <task id="LOCAL-00001" summary="Inyeccion de dependecia y Conexion a Mysql">
       <created>1662750733583</created>
@@ -122,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662944218563</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Create User y Get de usuarios">
+      <created>1663862962482</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1663862962482</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +158,7 @@
     <MESSAGE value="Inyeccion de dependecia y Conexion a Mysql" />
     <MESSAGE value="CreateUser method" />
     <MESSAGE value="metodo getList" />
-    <option name="LAST_COMMIT_MESSAGE" value="metodo getList" />
+    <MESSAGE value="Create User y Get de usuarios" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create User y Get de usuarios" />
   </component>
 </project>

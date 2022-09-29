@@ -12,7 +12,7 @@ namespace userApp.services
     {
         public ResponseModel CreateGroup(GroupModel groupModel);
 
-        public void UpdateGroup(GroupModel groupModel);
+        public ResponseModel UpdateGroup(int id, GroupModel groupModel);
 
         public ResponseModel<GroupModel> GetGroup(int id);
 

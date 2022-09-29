@@ -24,17 +24,23 @@ namespace userApp.services
         {
             ResponseModel response = new();
 
+            if (_db.groups.Any(context => context.groupName == groupModel.groupName))
+            {
+                response.Succes = false;
+                response.Errors.Add("ya existe el nombre del grupo");
+                return response;
+            }
             //validar
 
             if(string.IsNullOrEmpty(groupModel.groupName))
             {
                 response.Succes = false;
                 response.Errors.Add("El campo nombre de grupo es requerido");
-            }
-
+            } 
+            
             if (!response.Succes) return response;
 
-            var newGroups = new DAL.Entities.GroupContext
+            var newGroups = new GroupContext
             {
                 groupName = groupModel.groupName,
                 Inactive = groupModel.Inactive == "Active",
@@ -58,8 +64,7 @@ namespace userApp.services
 
             var response = new ResponseModel<GroupModel>();
             
-
-            var group = _db.groups.Where(g => g.groupId == id).FirstOrDefault();
+            var group = _db.groups.FirstOrDefault(context => context.groupId == id);
 
             if(group == null)
             {
@@ -109,9 +114,50 @@ namespace userApp.services
             return response;
         }
 
-        public void UpdateGroup(GroupModel groupModel)
+        public ResponseModel UpdateGroup(int id, GroupModel groupModel)
         {
-            throw new NotImplementedException();
+            var response = new ResponseModel();
+            
+            var group = _db.groups.FirstOrDefault(context => context.groupId == id);
+ 
+            if(group == null)
+            {
+                response.Succes = false;
+                response.Errors.Add("El grupo no existe");
+
+            }
+            if (!response.Succes)
+            {
+                return response;
+            }
+            
+            if (_db.groups.Any(context => context.groupName == groupModel.groupName))
+            {
+                response.Succes = false;
+                response.Errors.Add("ya existe el nombre del grupo");
+                return response;
+            }
+            
+            //validar
+
+            if(string.IsNullOrEmpty(groupModel.groupName))
+            {
+                response.Succes = false;
+                response.Errors.Add("El campo nombre de grupo es requerido para actualizar");
+            }
+            
+            if (!response.Succes) return response;
+            
+
+            
+                group.groupName = groupModel.groupName;
+                group.Inactive = groupModel.Inactive == "Active";
+                group.LastUpdateBy = "";
+                group.LastUpdateDate = DateTime.Now;
+                _db.groups.Update(group);
+                _db.SaveChanges();
+                
+                return response;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace userApp.DAL
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("Server=localhost;Port=3306;Database=userapp;User Id=root;Password=root");
+            optionsBuilder.UseMySQL("Server=localhost;Port=3306;Database=userapp;User Id=root;Password=9dejulio293");
         }
         public DbSet<UserContext> users { get; set; }
 

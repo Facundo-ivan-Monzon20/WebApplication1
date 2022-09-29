@@ -51,12 +51,15 @@ namespace UserAPP.APi.controllers
 
         // PUT USER
 
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public ActionResult UpdateGroup([FromRoute]int id,[FromBody] GroupModel groupModel)
         {
-            if (id == -1)
-                return NoContent();
-            return Ok();
+            var _response = _groupServices.UpdateGroup(id ,groupModel);
+
+            if (_response.Succes) return Ok();
+
+
+            return BadRequest(_response.Errors);
         }
  
         [HttpDelete("id")]
