@@ -18,7 +18,7 @@ namespace userApp.services
 
         public List<GroupModel> GetGroups();
 
-        public void DeleteGroup(int id);
+        public ResponseModel DeleteGroup(int id);
 
     }
 }

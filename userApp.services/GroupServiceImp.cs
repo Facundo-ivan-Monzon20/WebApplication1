@@ -54,9 +54,25 @@ namespace userApp.services
             return response;
         }
 
-        public void DeleteGroup(int id)
+        public  ResponseModel DeleteGroup(int id)
         {
-            throw new NotImplementedException();
+            var response = new ResponseModel();
+
+            if(!_db.groups.Any(g => g.groupId == id)){
+            
+                response.Succes=false;
+                response.Errors.Add("No existe el grupo que quiere borrar");
+
+                return response;
+            }
+
+            var group = _db.groups.FirstOrDefault(g => g.groupId == id);
+
+            _db.groups.Remove(group);
+            _db.SaveChanges();
+
+            return response;
+
         }
 
         public ResponseModel<GroupModel> GetGroup(int id)
